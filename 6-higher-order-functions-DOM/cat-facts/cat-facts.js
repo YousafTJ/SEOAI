@@ -7,7 +7,7 @@ let allHtmlElements = document.querySelectorAll("img");
 console.log(allHtmlElements)
 
 //Delete all images
-allHtmlElements.forEach(callBack);
+// allHtmlElements.forEach(callBack);
 function callBack(HTMLElement){
     HTMLElement.remove();
 }
