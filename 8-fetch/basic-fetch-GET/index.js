@@ -1,8 +1,7 @@
-fetch('https://cat-fact.herokuapp.com/facts/random')
-    .then(data => {
-
-        return data.json();
+fetch("https://catfact.ninja/fact")
+    .then(response =>{
+        return response.json();
     })
-    .then(post => {
-        console.log("asdads");
+    .then(dataAsJSON =>{
+        console.log(dataAsJSON);
     });
