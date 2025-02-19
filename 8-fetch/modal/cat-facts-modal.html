@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Feline Facts</title>
+    <link rel="stylesheet" href="cat-facts-modal.css">
+</head>
+<body>
+<header>
+    <div class="logo">Feline Facts</div>
+    <nav>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#facts">Facts</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero" id="hero">
+    <h1>All the Meow-tastic Info You Need</h1>
+    <p>Welcome to our cat fact corner, where we celebrate curious felines and their fascinating quirks. From whisker wonders to purr-fect habits, we’ve got it all!</p>
+    <button id="click">Read More Facts</button >
+</section>
+
+<main>
+    <h2 style="text-align:center; color: #4a295c; margin-bottom: 1rem;">Did You Know?</h2>
+    <section class="cat-facts" id="facts">
+        <!-- Fact 1 -->
+        <div class="fact-card" data-fact-id="1">
+            <img src="https://www.cats.org.uk/media/10216/tuqa-nabi-uhnzzuatios-unsplash.jpg?width=470.27741083223253&height=500" alt="Cat Photo 1" />
+            <div class="fact-content">
+                <h2>Nap Masters</h2>
+                <p>Cats can sleep up to 16 hours a day—that’s two-thirds of their entire life!</p>
+                <button class="more-info">More Info</button>
+            </div>
+        </div>
+        <!-- Fact 2 -->
+        <div class="fact-card" data-fact-id="2">
+            <img src="https://www.pethealthnetwork.com/sites/default/files/why-my-cat-talking-so-much-180784999.jpg" alt="Cat Photo 2" />
+            <div class="fact-content">
+                <h2>Communication Experts</h2>
+                <p>Cats have over 100 different vocal sounds, while dogs only have about 10.</p>
+                <button class="more-info">More Info</button>
+            </div>
+        </div>
+        <!-- Fact 3 -->
+        <div class="fact-card" data-fact-id="3">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToWRTgYJKbPDhvc192BgwYKDyjAuyLhCmXrQ&s" alt="Cat Photo 3" />
+            <div class="fact-content">
+                <h2>Whiskers Are Key</h2>
+                <p>Whiskers help cats sense their surroundings and gauge tight spaces. They’re ultra sensitive!</p>
+                <button class="more-info">More Info</button>
+            </div>
+        </div>
+        <!-- Fact 4 -->
+        <div class="fact-card" data-fact-id="4">
+            <img src="https://thecatsite.com/c/wp-content/uploads/2023/07/Shutterstock_762621211.jpg" alt="Cat Photo 4" />
+            <div class="fact-content">
+                <h2>Super Hearing</h2>
+                <p>Cats can hear frequencies up to 64 kHz, well beyond what humans can detect.</p>
+                <button class="more-info">More Info</button>
+            </div>
+        </div>
+        <!-- Fact 5 -->
+        <div class="fact-card" data-fact-id="5">
+            <img src="https://assets3.thrillist.com/v1/image/3018659/1200x630/flatten;crop_down;webp=auto;jpeg_quality=70" alt="Cat Photo 5" />
+            <div class="fact-content">
+                <h2>Night Vision</h2>
+                <p>A cat’s night vision is about six times better than that of a human, thanks to specialized eye cells.</p>
+                <button class="more-info">More Info</button>
+            </div>
+        </div>
+        <!-- Fact 6 -->
+        <div class="fact-card" data-fact-id="6">
+            <img src="https://d.newsweek.com/en/full/2171262/cat-falling-while-sleeping-delights-viewers.jpg?w=1600&h=1600&q=88&f=f03687b528c1c63c2ff914e44eb7b6f8" alt="Cat Photo 6" />
+            <div class="fact-content">
+                <h2>Graceful Falls</h2>
+                <p>Cats have a “righting reflex,” letting them twist mid-air to land on their feet.</p>
+                <button class="more-info">More Info</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="factModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-header">
+            <h2 id="modalTitle">Title of the Modal</h2>
+        </div>
+        <div class="modal-body">
+            <p id="modalContent">Body Content of the modal</p>
+        </div>
+    </div>
+</div>
+
+<footer id="contact">
+    <p>2025 Feline Facts. All Rights Reserved.</p>
+</footer>
+    <script src="cat-facts-modal.js"></script>
+    <script src="event-listening.js"></script>
+</body>
+</html>
