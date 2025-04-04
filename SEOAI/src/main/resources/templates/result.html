@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>SEO Resultat</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #ffffff;
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .metric {
+      margin: 10px 0;
+      padding: 14px;
+      background: #f1f1f1;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .good {
+      background-color: #d4edda;
+      border-left: 5px solid #28a745;
+    }
+
+    .ok {
+      background-color: #fff3cd;
+      border-left: 5px solid #ffc107;
+    }
+
+    .bad {
+      background-color: #f8d7da;
+      border-left: 5px solid #dc3545;
+    }
+
+    .label {
+      font-weight: bold;
+      display: inline-block;
+      min-width: 220px;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 30px;
+      text-decoration: none;
+      color: #4CAF50;
+      font-size: 16px;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<h2>SEO-analyse af <span th:text="${url}">[Indlæser URL]</span></h2>
+
+<!-- Performance score med farvekode -->
+<div th:with="score=${result.performanceScore}">
+  <div class="metric" th:classappend="${score} >= 90 ? 'good' : (${score} >= 50 ? 'ok' : 'bad')">
+    <span class="label">Performance-score:</span>
+    <span th:text="${score} + '%'">Loading...</span>
+  </div>
+</div>
+
+<!-- Yderligere nøgletal -->
+<div class="metric">
+  <span class="label">First Contentful Paint:</span>
+  <span th:text="${result.firstContentfulPaint}">Loading...</span>
+</div>
+
+<div class="metric">
+  <span class="label">Largest Contentful Paint:</span>
+  <span th:text="${result.largestContentfulPaint}">Loading...</span>
+</div>
+
+<div class="metric">
+  <span class="label">Time to Interactive:</span>
+  <span th:text="${result.timeToInteractive}">Loading...</span>
+</div>
+
+<div class="metric">
+  <span class="label">Speed Index:</span>
+  <span th:text="${result.speedIndex}">Loading...</span>
+</div>
+
+<div class="metric">
+  <span class="label">Sidestørrelse (bytes):</span>
+  <span th:text="${result.totalBytes}">Loading...</span>
+</div>
+
+<div class="metric">
+  <span class="label">Server-responstid:</span>
+  <span th:text="${result.serverResponseTime}">Loading...</span>
+</div>
+
+<h3>Meta-data</h3>
+<div class="metric">
+  <span class="label">Titel:</span>
+  <span th:text="${meta.title}">[Titel ikke fundet]</span>
+</div>
+
+<div class="metric">
+  <span class="label">Meta-beskrivelse:</span>
+  <span th:text="${meta.description}">[Beskrivelse ikke fundet]</span>
+</div>
+
+<h2>🧱 Teknologier på hjemmesiden</h2>
+<ul>
+  <li th:each="t : ${tech.technologies}" th:text="${t}"></li>
+</ul>
+
+
+<a href="/">← Analyser en ny side</a>
+
+</body>
+</html>
