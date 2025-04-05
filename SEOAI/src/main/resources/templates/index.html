@@ -1,79 +1,87 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="da">
 <head>
     <meta charset="UTF-8">
-    <title>SEO Analyzer</title>
+    <title>SEO Analyzer – Syncore AI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
+            margin: 0;
             font-family: 'Segoe UI', sans-serif;
-            background: #f0f2f5;
-            padding: 80px 20px;
+            background: linear-gradient(135deg, #6A5AE0, #302D8D);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
             text-align: center;
-            color: #333;
+            padding: 20px;
         }
 
         h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
+            font-size: 3rem;
+            margin-bottom: 10px;
         }
 
         p {
-            font-size: 18px;
+            font-size: 1.2rem;
+            max-width: 600px;
             margin-bottom: 40px;
-            color: #555;
         }
 
         form {
-            display: inline-block;
-            background: white;
-            padding: 30px 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.08);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         input[type="text"] {
-            width: 350px;
-            padding: 14px;
+            width: 300px;
+            padding: 15px;
+            border-radius: 30px;
+            border: none;
             font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
             margin-bottom: 20px;
         }
 
         button {
-            width: 100%;
-            padding: 14px;
+            padding: 14px 32px;
             font-size: 16px;
-            background-color: #4CAF50;
+            border-radius: 30px;
             border: none;
-            border-radius: 8px;
-            color: white;
+            background-color: white;
+            color: #6A5AE0;
+            font-weight: bold;
             cursor: pointer;
+            transition: background 0.3s ease;
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: #e6e6ff;
         }
 
         @media (max-width: 500px) {
             input[type="text"] {
-                width: 90%;
+                width: 100%;
             }
 
             form {
-                width: 100%;
+                width: 90%;
             }
         }
     </style>
 </head>
 <body>
 
-<h1>SEO Analyzer</h1>
-<p>Indtast en webadresse og få indsigt i sidens tekniske performance og SEO.</p>
+<h1>🚀 SEO Analyzer</h1>
+<p>Indtast en webadresse og få AI-drevet indsigt i sidens tekniske performance og SEO-potentiale.</p>
 
 <form action="/analyze" method="post">
-    <input type="text" name="url" placeholder="https://din-side.dk" required>
-    <br>
+    <input type="text" name="url" placeholder="https://din-side.dk" required><br>
+    <input type="text" name="industry" placeholder="Branche (f.eks. frisør, klinik)" required><br>
     <button type="submit">Start analyse</button>
 </form>
 

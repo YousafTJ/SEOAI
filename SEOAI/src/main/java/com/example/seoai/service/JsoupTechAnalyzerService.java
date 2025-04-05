@@ -7,7 +7,6 @@ import org.jsoup.nodes.Element;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.regex.Pattern;
 
 @Service
 public class JsoupTechAnalyzerService {
@@ -21,53 +20,69 @@ public class JsoupTechAnalyzerService {
                     .timeout(10000)
                     .get();
 
-            // 📦 1. CMS
+            // 🔍 1. META-generator (CMS)
             Element generatorMeta = doc.selectFirst("meta[name=generator]");
             if (generatorMeta != null) {
                 String generator = generatorMeta.attr("content");
                 technologies.add("CMS: " + generator);
             }
 
-            // 📊 2. Analytics (GA, GTM)
+            // 🧠 2. script[src] - JavaScript libraries / analytics
             for (Element script : doc.select("script[src]")) {
-                String src = script.attr("src");
+                String src = script.attr("src").toLowerCase();
 
-                if (src.contains("gtag/js")) {
+                if (src.contains("gtag/js") || src.contains("analytics.js")) {
                     technologies.add("Google Analytics");
-                } else if (src.contains("googletagmanager.com")) {
+                }
+                if (src.contains("googletagmanager.com")) {
                     technologies.add("Google Tag Manager");
-                } else if (src.contains("hotjar.com")) {
+                }
+                if (src.contains("hotjar.com")) {
                     technologies.add("Hotjar");
-                } else if (src.contains("facebook.net")) {
+                }
+                if (src.contains("facebook.net")) {
                     technologies.add("Facebook Pixel");
+                }
+                if (src.contains("jquery")) {
+                    technologies.add("jQuery");
+                }
+                if (src.contains("react")) {
+                    technologies.add("React.js");
+                }
+                if (src.contains("vue")) {
+                    technologies.add("Vue.js");
+                }
+                if (src.contains("next")) {
+                    technologies.add("Next.js");
                 }
             }
 
-            // 💄 3. Frameworks (CSS/js)
+            // 🎨 3. link[href] - CSS frameworks
             for (Element link : doc.select("link[href]")) {
-                String href = link.attr("href");
+                String href = link.attr("href").toLowerCase();
 
                 if (href.contains("bootstrap")) {
                     technologies.add("Bootstrap");
-                } else if (href.contains("fontawesome")) {
-                    technologies.add("FontAwesome");
+                }
+                if (href.contains("tailwind")) {
+                    technologies.add("Tailwind CSS");
+                }
+                if (href.contains("fontawesome")) {
+                    technologies.add("Font Awesome");
                 }
             }
 
-            // 📜 jQuery
-            if (doc.toString().contains("jquery")) {
-                technologies.add("jQuery");
+            // 🧹 Fjern dubletter
+            Set<String> unique = new LinkedHashSet<>(technologies);
+            if (unique.isEmpty()) {
+                unique.add("Ingen teknologier fundet");
             }
 
-            if (technologies.isEmpty()) {
-                technologies.add("Ingen teknologier identificeret");
-            }
-
-            return new TechStackResult(technologies);
+            return new TechStackResult(new ArrayList<>(unique));
 
         } catch (Exception e) {
-            System.out.println("❌ Fejl i JSoup-analyse: " + e.getMessage());
-            return new TechStackResult(List.of("Fejl under analyse"));
+            System.out.println("❌ JSoup-analysefejl: " + e.getMessage());
+            return new TechStackResult(List.of("Fejl under teknologi-analyse"));
         }
     }
 }
